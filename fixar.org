@@ -1,3 +1,3 @@
 * Tasks
 ** TODO Write tests for every method
-** TODO Write a TODO
+** TODO Add nicer output to [[file:fixar.py::return%20str(self.num_bits)%20+%20"bits:%20"%20+%20str(self.value)][str function]]
