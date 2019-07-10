@@ -77,6 +77,7 @@ class FixedInt(object):
         return self.value != other.value
 
     def __neg__(self):
+        """ This is not 'pythonic', but it is correct for general binary arithmetic """
         v = BitNot(self.value, self.num_bits) + 1
         return FixedInt(v, self.num_bits)
     def __invert__(self):

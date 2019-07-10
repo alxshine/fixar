@@ -52,21 +52,35 @@ class TestFixedInt(unittest.TestCase):
         
     def test_lt(self):
         self.assertRaises(TypeError, lambda x, y: a<c)
+        self.assertTrue(self.b < self.a)
+        self.assertFalse(self.a < self.b)
         
     def test_gt(self):
         self.assertRaises(TypeError, lambda x, y: a>c)
+        self.assertTrue(self.a > self.b)
+        self.assertFalse(self.b > self.a)
         
     def test_le(self):
         self.assertRaises(TypeError, lambda x, y: a<=c)
+        self.assertTrue(self.b <= self.a)
+        self.assertFalse(self.a <= self.b)
+        self.assertTrue(self.a <= self.a)
         
     def test_ge(self):
         self.assertRaises(TypeError, lambda x, y: a>=c)
+        self.assertTrue(self.a >= self.b)
+        self.assertFalse(self.b >= self.a)
+        self.assertTrue(self.a >= self.a)
         
     def test_eq(self):
         self.assertRaises(TypeError, lambda x, y: a==c)
+        self.assertTrue(self.a == self.a)
+        self.assertFalse(self.a == self.b)
         
     def test_ne(self):
         self.assertRaises(TypeError, lambda x, y: a!=c)
+        self.assertTrue(self.a != self.b)
+        self.assertFalse(self.a != self.a)
         
     def test_neg(self):
         v = FixedInt(0x22, 8)
@@ -74,8 +88,7 @@ class TestFixedInt(unittest.TestCase):
         self.assertEqual(neg_v, 0xde)
         
     def test_invert(self):
-        self.assertRaises(TypeError, lambda x, y: a+c)
-        
+        self.assertEqual((~self.a).value, BitNot(self.v_a, self.a.num_bits))        
     
 if __name__ == '__main__':
     unittest.main()
