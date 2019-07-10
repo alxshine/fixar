@@ -28,18 +28,27 @@ class TestFixedInt(unittest.TestCase):
         self.assertRaises(TypeError, lambda x, y: a-c)
         v = self.a-self.b
         self.assertEqual(v.value, self.v_a-self.v_b)
+        #negatives are tested in test_neg
         
     def test_mul(self):
         self.assertRaises(TypeError, lambda x, y: a*c)
+        v = self.a*self.b
+        self.assertEqual(v.value, (self.v_a*self.v_b)&0xff)
 
     def test_div(self):
         self.assertRaises(TypeError, lambda x, y: a/c)
+        v = self.a/self.b
+        self.assertEqual(v.value, self.v_a//self.v_b)
         
     def test_mod(self):
         self.assertRaises(TypeError, lambda x, y: a%c)
+        v = self.a%self.b
+        self.assertEqual(v.value, self.v_a%self.v_b)
         
     def test_pow(self):
         self.assertRaises(TypeError, lambda x, y: a**c)
+        v = self.a**self.b
+        self.assertEqual(v.value, (self.v_a**self.v_b)&0xff)
         
     def test_lt(self):
         self.assertRaises(TypeError, lambda x, y: a<c)
