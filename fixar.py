@@ -21,12 +21,12 @@ class FixedInt(object):
     def __sub__(self, other):
         if other.num_bits != self.num_bits:
             raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
-        return FixedInt(self.value - other.value, new_width)
+        return FixedInt(self.value - other.value, self.num_bits)
     
     def __mul__(self, other):
         if other.num_bits != self.num_bits:
             raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
-        return FixedInt(self.value * other.value, new_width)
+        return FixedInt(self.value * other.value, self.num_bits)
     
     def __truediv__(self, other):
         return self//other
