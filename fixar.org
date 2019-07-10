@@ -1,3 +1,5 @@
 * Tasks
-** TODO Write tests for every method
+** DONE Write tests for every method
+   CLOSED: [2019-07-10 Wed 18:13]
 ** TODO Add nicer output to [[file:fixar.py::return%20str(self.num_bits)%20+%20"bits:%20"%20+%20str(self.value)][str function]]
+** TODO Add methods for logical operators
