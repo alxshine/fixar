@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fixar",
-    version="1.0.0",
+    version="0.9.2dev",
     author="Alexander Schlögl",
     author_email="alexander.schloegl@uibk.ac.at",
     description="Fixed-size integers for python",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/alxshine/fixar",
-    packages=setuptools.find_packages(),
+    packages=['fixar'],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
