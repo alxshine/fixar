@@ -46,6 +46,103 @@ class FixedInt(object):
             raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
         return FixedInt(self.value**other.value, self.num_bits)
 
+    def __and__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        return FixedInt(self.value & other.value, self.num_bits)
+
+    def __or__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        return FixedInt(self.value | other.value, self.num_bits)
+
+    def __xor__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        return FixedInt(self.value ^ other.value, self.num_bits)
+    
+    def __lshift__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        return FixedInt(self.value << other.value, self.num_bits)
+
+    def __rshift__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        return FixedInt(self.value >> other.value, self.num_bits)
+
+    def __iadd__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value += other.value
+
+    def __isub__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value -= other.value
+        
+    def __imul__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value *= other.value
+        
+    def __idiv__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value //= other.value
+
+    def __ifloordiv__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value //= other.value
+
+    def __imod__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value %= other.value
+        
+    def __ipow__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value **= other.value
+        
+    def __ilshift__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value <<= other.value
+        
+    def __irshift__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= BitMask(self.num_bits)
+        self.value >>= other.value
+        
+    def __iand__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value &= other.value
+        self.value &= BitMask(self.num_bits)
+        
+    def __ior__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value |= other.value
+        self.value &= BitMask(self.num_bits)
+        
+    def __ixor__(self, other):
+        if other.num_bits != self.num_bits:
+            raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
+        self.value ^= other.value
+        self.value &= BitMask(self.num_bits)
+                    
     def __lt__(self, other):
         if other.num_bits != self.num_bits:
             raise TypeError('Got FixedInt with width of {} bits, but expected {} bits'.format(other.numbits, self.numbits))
