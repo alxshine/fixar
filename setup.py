@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="fixar",
-    version="1.0.0"
+    version="1.0.0",
     author="Alexander Schlögl",
     author_email="alexander.schloegl@uibk.ac.at",
     description="Fixed-size integers for python",
